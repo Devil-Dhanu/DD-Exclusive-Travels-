@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌍 DD Exclusive | Premium Travel Agency</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+<body>
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>🌍 DD Exclusive Travels</h1>
+            <p>Where Luxury Meets Adventure</p>
+            <button onclick="loadTrips()">Explore Destinations</button>
+
+    </header>
+
+    <nav class="top-nav">
+        <a href="#" onclick="loadTrips()">Destinations</a>
+        <a href="#" onclick="showBookings()">My Bookings</a>
+        <a href="#" onclick="showLogin()">Login</a>
+    </nav>
+
+    <main>
+        </div>
+        <!-- Place inside your .hero-section or wherever you want the video 
+        <video autoplay muted loop id="heroVideo"
+            style="width:100%; max-height:800px; object-fit:cover; border-radius:16px;">
+            <source src="Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        </div> -->
+
+        <section id="trip-section" class="hidden">
+            <h2 class="section-heading">🌟 Featured Destinations</h2>
+            <div class="filters">
+                <input type="text" id="searchInput" placeholder="Search destination..." />
+                <input type="number" id="priceFilter" placeholder="Max price" />
+                <button onclick="applyFilters()">Filter</button>
+            </div>
+
+            <div id="trip-list" class="card-container"></div>
+        </section>
+
+
+        <section id="bookings-section" class="hidden">
+            <h2 class="section-heading">🧾 My Bookings</h2>
+            <ul id="bookingList" class="booking-list"></ul>
+        </section>
+
+        <section id="login-section" class="hidden login-panel">
+            <h2>🔐 Login</h2>
+            <form onsubmit="loginUser(event)">
+                <input type="email" id="email" placeholder="Email" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+        </section>
+        <div id="auth-box">
+            <h3>Login or Signup</h3>
+            <input type="email" id="auth-email" placeholder="Email" />
+            <input type="password" id="auth-pass" placeholder="Password" />
+            <button onclick="signup()">Sign Up</button>
+            <button onclick="login()">Login</button>
+            <button onclick="logout()">Logout</button>
+            <p id="auth-status"></p>
+        </div>
+
+
+        <div class="theme-toggle">
+            <label class="switch">
+                <input type="checkbox" id="toggle-theme">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const toggleButton = document.getElementById('toggle-theme');
+                toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+            });
+        </script>
+        <script>
+            document.getElementById('toggle-theme').addEventListener('click', function () {
+                document.body.classList.toggle('dark-mode');
+                this.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+            });
+        </script>
+        <!-- Firebase Scripts -->
+        <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
+
+        <script>
+            const firebaseConfig = {
+                apiKey: "AIzaSyDbe-2mJj_0yM6dF6hUAftVJBOdlvAWGZE",
+                authDomain: "dd-exclusive-travels.firebaseapp.com",
+                projectId: "dd-exclusive-travels",
+                storageBucket: "dd-exclusive-travels.firebasestorage.app",
+                messagingSenderId: "227804871147",
+                appId: "1:227804871147:web:7af738557dd6a723ca81ae"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+        </script>
+
+        <script src="script.js"></script>
+
+
+        <div id="loginModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3>Login</h3>
+                <form onsubmit="loginUser(event)">
+                    <input type="email" id="email" placeholder="Email" required />
+                    <input type="password" id="password" placeholder="Password" required />
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="bookingModal" class="modal hidden">
+            <div class="modal-content">
+                <span id="closeModal" class="close-btn">&times;</span>
+                <div id="bookingInfo"></div>
+                <form id="booking-form">
+                    <input type="text" id="name" placeholder="Name" required />
+                    <input type="email" id="email" placeholder="Email" required />
+                    <input type="date" id="travel-date" required />
+                    <input type="number" id="people" placeholder="No. of People" required />
+                    <select id="destination" required>
+                        <option value="Coorg">Coorg</option>
+                        <option value="Mysuru">Mysuru</option>
+                        <!-- Add more destinations -->
+                    </select>
+                    <button type="submit">Book Now</button>
+                </form>
+
+                <p id="success-msg"></p>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 DD Exclusive Travels. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- VanillaTilt for parallax tilt effect -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
+
+</body>
+
+</html>

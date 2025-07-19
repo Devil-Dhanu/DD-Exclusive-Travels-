@@ -1,0 +1,496 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to left, #edcf62, #f0f7b2);
+    color: #333;
+}
+
+.hero-section {
+    background: linear-gradient(to right, #3084ce, #7e2ba1);
+    padding: 6rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.hero-content button {
+    background: white;
+    color: #007aff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.top-nav {
+    background: #cce4aa;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.top-nav a {
+    color: #007aff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    padding: 2rem;
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.filters input,
+.filters button {
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+.filters button {
+    background: #007aff;
+    color: hsl(0, 13%, 92%);
+    border: none;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    /* Increased width */
+    gap: 3rem;
+    /* Increased gap for more spacing */
+    min-height: 60vh;
+    /* Increased minimum height */
+}
+
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.trip-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.9s ease, filter 0.9s ease;
+    border-radius: 8px 8px 0 0;
+}
+
+.trip-card img:hover {
+    transform: translateY(-24px);
+    transform: scale(1.15);
+    filter: brightness(1.3);
+}
+
+
+.trip-card:hover {
+    transform: scale(1.15);
+    transform: translateY(-24px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.trip-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.trip-card .card-body {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.trip-card button {
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.trip-card button:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.card-body {
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-body h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.card-body button {
+    margin-top: 1rem;
+    padding: 0.5rem 1.2rem;
+    background-color: #00c6ff;
+    color: rgb(249, 248, 245);
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-content form input,
+.modal-content form button {
+    width: 100%;
+    padding: 0.6rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.modal-content form button {
+    background-color: #4facfe;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+.login-panel {
+    max-width: 400px;
+    margin: auto;
+}
+
+.booking-list {
+    max-width: 600px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+}
+
+.booking-list li {
+    background: rgb(255, 255, 255);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #63d7df;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+    text-align: right;
+    padding: 10px 20px;
+}
+
+#toggle-theme {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: #222;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#toggle-theme:hover {
+    background-color: #444;
+}
+
+/* Dark mode styles */
+body.dark {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark .trip-card {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+
+body.dark .trip-card h3,
+body.dark .trip-card p {
+    color: #f5f5f5;
+}
+
+body.dark .trip-card button {
+    background: linear-gradient(to right, #4b6cb7, #182848);
+}
+
+/* Extend dark mode to full page */
+body.dark {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark header,
+body.dark .theme-toggle {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark #trip-list {
+    background-color: #121212;
+}
+
+body.dark .trip-card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+}
+
+body.dark .trip-card button {
+    background: linear-gradient(to right, #4b6cb7, #182848);
+    color: #ffffff;
+}
+
+body.dark .trip-card:hover {
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+body.dark #toggle-theme {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+
+#toggle-theme {
+    transition: background-color 0.9s ease, color 0.9s ease;
+}
+
+body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.trip-card {
+    transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.trip-card h3,
+.trip-card p {
+    transition: color 0.4s ease;
+}
+
+.trip-card button {
+    transition: background 0.4s ease, transform 0.3s ease;
+}
+
+header,
+.theme-toggle,
+#trip-list {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.trip-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .container,
+body.dark footer {
+    background-color: #181818;
+    color: #e0e0e0;
+}
+
+/* Toggle Switch Style */
+.theme-toggle {
+    text-align: right;
+    padding: 10px 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    background-color: #ccc;
+    border-radius: 34px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "🌞";
+    height: 26px;
+    width: 26px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+input:checked+.slider {
+    background-color: #444;
+}
+
+input:checked+.slider:before {
+    transform: translateX(30px);
+    content: "🌙";
+}
+
+/* Night sky background for dark mode */
+body.dark {
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    color: #e0e0e0;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Optional twinkling star overlay (faint) */
+body.dark::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('https://i.imgur.com/NzZXCoj.png') repeat;
+    opacity: 0.05;
+    z-index: -1;
+    animation: twinkle 100s linear infinite;
+}
+
+@keyframes twinkle {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -10000px 5000px;
+    }
+}
+
+.trip-card {
+    will-change: transform;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.filter-bar input,
+.filter-bar select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    flex: 1;
+    min-width: 150px;
+}
+
+body.dark .filter-bar {
+    background-color: #1e1e1e;
+}
+
+body.dark .filter-bar input,
+body.dark .filter-bar select {
+    background-color: #2a2a2a;
+    color: #fff;
+    border-color: #444;
+}
